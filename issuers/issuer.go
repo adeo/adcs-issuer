@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"time"
+	"crypto/x509"
+	"encoding/pem"
 
 	//cmapi "github.com/jetstack/cert-manager/pkg/apis/certmanager/v1alpha2"
 	//cmmeta "github.com/jetstack/cert-manager/pkg/apis/meta/v1"
@@ -15,7 +17,7 @@ import (
 )
 
 const (
-	adcsCertTemplate = "BasicSSLWebServer"
+	adcsCertTemplate = "WebServerSHA-256"
 )
 
 type Issuer struct {
@@ -83,9 +85,19 @@ func (i *Issuer) Issue(ctx context.Context, ar *api.AdcsRequest) ([]byte, []byte
 
 	ca, err := i.certServ.GetCaCertificateChain()
 	if err != nil {
-		return nil, nil, err
+                return nil, nil, err
+        }
+	block, _ := pem.Decode([]byte(ca))
+	_, errParse := x509.ParseCertificate(block.Bytes)
+	if errParse != nil {
+		ca, err := i.certServ.GetCaCertificate()
+                if err != nil {
+                    return nil, nil, err
+	        } else {
+			return cert, []byte(ca), nil
+		}
+	} else {
+		return cert, []byte(ca), nil
 	}
-
-	return cert, []byte(ca), nil
 
 }

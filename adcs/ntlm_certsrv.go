@@ -39,6 +39,7 @@ func NewNtlmCertsrv(url string, username string, password string, caCertPool *x5
 	transport := &http.Transport{
 		TLSClientConfig: &tls.Config{
 			InsecureSkipVerify: false,
+			Renegotiation:      tls.RenegotiateOnceAsClient,
 			RootCAs:            caCertPool,
 		},
 	}
