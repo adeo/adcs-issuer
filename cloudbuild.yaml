@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'eu.gcr.io/$PROJECT_ID/github.com/$_ORG_NAME/$REPO_NAME:$TAG_NAME', '.', "--build-arg", "BUILD_ID=${BUILD_ID}", "--build-arg", "COMMIT_SHA=${COMMIT_SHA}", "--build-arg", "REPO_NAME=${REPO_NAME}", "--build-arg", "ORG_NAME=${_ORG_NAME}"]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'eu.gcr.io/$PROJECT_ID/github.com/$_ORG_NAME/$REPO_NAME:$TAG_NAME', 'eu.gcr.io/$PROJECT_ID/github.com/$_ORG_NAME/$REPO_NAME:latest']
+
+images: ['eu.gcr.io/$PROJECT_ID/github.com/$_ORG_NAME/$REPO_NAME:latest', 'eu.gcr.io/$PROJECT_ID/github.com/$_ORG_NAME/$REPO_NAME:$TAG_NAME']
+timeout: 3600s
