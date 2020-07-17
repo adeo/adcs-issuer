@@ -5,6 +5,7 @@ kind: CustomResourceDefinition
 metadata:
   name: adcsrequests.adcs.certmanager.csf.nokia.com
 spec:
+  preserveUnknownFields: false
   conversion:
     strategy: Webhook
     webhookClientConfig:

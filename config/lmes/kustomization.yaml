@@ -1,0 +1,4 @@
+resources:
+- selfsigned-issuer.yaml
+- clusterissuer.yaml
+- secret.yaml

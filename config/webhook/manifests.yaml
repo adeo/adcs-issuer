@@ -11,7 +11,7 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /mutate-adcs-certmanager-csf-nokia-com-v1-adcsissuer
+      path: /mutate-adcs-certmanager-csf.nokia.com-v1-adcsissuer
   failurePolicy: Fail
   name: adcsissuer-mutation.adcs.certmanager.csf.nokia.com
   rules:
@@ -37,7 +37,7 @@ webhooks:
     service:
       name: webhook-service
       namespace: system
-      path: /validate-adcs-certmanager-csf-nokia-com-v1-adcsissuer
+      path: /validate-adcs-certmanager-csf.nokia.com-v1-adcsissuer
   failurePolicy: Fail
   name: adcsissuer-validation.adcs.certmanager.csf.nokia.com
   rules:
