@@ -20,7 +20,6 @@ bases:
 - ../webhook
 # [CERTMANAGER] To enable cert-manager, uncomment all sections with 'CERTMANAGER'. 'WEBHOOK' components are required.
 - ../certmanager
-- ../lmes
 
 patchesStrategicMerge:
   # Protect the /metrics endpoint by putting it behind auth.
