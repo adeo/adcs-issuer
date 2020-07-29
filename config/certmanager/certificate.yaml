@@ -20,5 +20,5 @@ spec:
   - adcs-issuer-webhook-service.adcs-issuer-system.svc.cluster.local
   issuerRef:
     kind: ClusterIssuer
-    name: selfsigned-issuer
+    name: adcs-issuer-selfsigned-issuer
   secretName: webhook-server-cert # this secret will not be prefixed, since it's not managed by kustomize
